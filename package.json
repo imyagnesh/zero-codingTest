@@ -1,0 +1,12 @@
+{
+  "name": "zero-codingTest",
+  "version": "1.0.0",
+  "description": "Node.js, Express.js & PostgresSQL project for projects finding app",
+  "main": "index.js",
+  "repository": "https://github.com/imyagnesh/zero-codingTest.git",
+  "author": "Yagnesh Modh(yagnesh.modh@gmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
