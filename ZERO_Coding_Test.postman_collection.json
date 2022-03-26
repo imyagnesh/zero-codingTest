@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "67f56b21-d142-4886-99e7-bae1b0c68f32",
+		"name": "ZERO_Coding_Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "{{ZERO_URL}}/api/user/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"test@gmail.com\",\n    \"password\": \"abcd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ZERO_URL}}/api/user/login",
+					"host": [
+						"{{ZERO_URL}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{ZERO_URL}}/api/projects/addMembers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxMkBnbWFpbC5jb20iLCJpZCI6IjYyM2NjZDlkNmNjZDVlMjU1ODMxZmFjNSIsImV4cCI6MTY0ODI2OTIzMjM5NCwiaWF0IjoxNjQ4MTgyODMyfQ.2K3sKwyv64e40blazS6uoZp1y1Ow61bNntg_pDzWKs0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"projectId\": \"623d48de7face9f945c85574\",\n    \"members\": [\"623d4f0cb53382c4ad413a40\",\"623d4f1ab53382c4ad413a43\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ZERO_URL}}/api/projects/addMembers",
+					"host": [
+						"{{ZERO_URL}}"
+					],
+					"path": [
+						"api",
+						"projects",
+						"addMembers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{ZERO_URL}}/api/user/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"test2@gmail.com\",\n    \"name\": \"yagnesh1\",\n    \"password\": \"abcd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ZERO_URL}}/api/user/register",
+					"host": [
+						"{{ZERO_URL}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{ZERO_URL}}/api/projects",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoieWFnbmVzaCIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJpZCI6IjYyM2ViYmRlNmQ0MWIwZDcyNDdhZTkxOCIsImlhdCI6MTY0ODI4NTc5MiwiZXhwIjoxNjQ4MzcyMTkyfQ.xkbwYdTSa2ikIy3Rn3EZvy8likfVFqwRNP7IHTq96ko",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"project 2\",\n    \"private\": true,\n    \"status\": \"Launching\", \n    \"type\": \"Short Term Contract\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ZERO_URL}}/api/projects",
+					"host": [
+						"{{ZERO_URL}}"
+					],
+					"path": [
+						"api",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{ZERO_URL}}/api/projects",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ZERO_URL}}/api/projects",
+					"host": [
+						"{{ZERO_URL}}"
+					],
+					"path": [
+						"api",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

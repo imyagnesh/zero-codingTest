@@ -1,3 +1,3 @@
 # Zero Coding Challenge
 
-## Path 1
+Please find attached Postman collection from ZERO_Coding_Test.postman_collection.json in project

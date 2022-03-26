@@ -4,6 +4,7 @@ import { connection, connect } from 'mongoose';
 
 import compression from 'compression';
 import cors from 'cors';
+import swaggerIgnite from './util/swagger';
 
 import { MONGODB_URI } from './util/secrets';
 
@@ -18,6 +19,7 @@ class Server {
     this.app = express();
     Server.mongo();
     this.config();
+    this.initSwaggerDocs();
     this.routes();
     // this.initializeErrorHandling();
   }
@@ -66,6 +68,10 @@ class Server {
       });
     };
     run().catch((error) => console.error(error));
+  }
+
+  private initSwaggerDocs() {
+    swaggerIgnite(this.app);
   }
 
   public start(): void {
