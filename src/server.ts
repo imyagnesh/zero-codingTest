@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
-import mongoose from 'mongoose';
+import { connection, connect } from 'mongoose';
 
 import compression from 'compression';
 import cors from 'cors';
@@ -36,7 +36,6 @@ class Server {
   }
 
   private static mongo() {
-    const { connection } = mongoose;
     connection.on('connected', () => {
       console.log('Mongo Connection Established');
     });
@@ -47,7 +46,7 @@ class Server {
       console.log('Mongo Connection Disconnected');
       console.log('Trying to reconnect to Mongo ...');
       setTimeout(() => {
-        mongoose.connect(MONGODB_URI || '', {
+        connect(MONGODB_URI || '', {
           keepAlive: true,
           socketTimeoutMS: 3000,
           connectTimeoutMS: 3000,
@@ -62,16 +61,12 @@ class Server {
     });
 
     const run = async () => {
-      await mongoose.connect(MONGODB_URI || '', {
+      await connect(MONGODB_URI || '', {
         keepAlive: true,
       });
     };
     run().catch((error) => console.error(error));
   }
-
-  // private initializeErrorHandling() {
-  //   this.app.use(errorMiddleware);
-  // }
 
   public start(): void {
     this.app.listen(this.app.get('port'), () => {
