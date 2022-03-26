@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import validationMiddleware from 'src/middleware/validation.middleware';
-import ProjectsController from 'src/controllers/projectsController';
-import ProjectsValidator from 'src/validators/projects';
+import validationMiddleware from '../middleware/validation.middleware';
+import ProjectsController from '../controllers/projectController';
+import ProjectsValidator from '../validators/projects';
 import verifyToken from '../middleware/auth.middleware';
 
 class ProjectsRoutes {
