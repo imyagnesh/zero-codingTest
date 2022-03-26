@@ -6,6 +6,9 @@
   "repository": "https://github.com/imyagnesh/zero-codingTest.git",
   "author": "Yagnesh Modh(yagnesh.modh@gmail.com)",
   "license": "MIT",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "start": "npm run serve",
     "build": "npm run build-ts && npm run eslint",
