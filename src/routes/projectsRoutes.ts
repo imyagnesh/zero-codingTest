@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import validationMiddleware from '../middleware/validation.middleware';
-import ProjectsController from '../controllers/ProjectsController';
+import ProjectsController from '../controllers/projectsController';
 import ProjectsValidator from '../validators/projects';
 import verifyToken from '../middleware/auth.middleware';
 
@@ -14,6 +14,7 @@ class ProjectsRoutes {
 
   routes() {
     this.router.get('/', ProjectsController.getProjects);
+    this.router.get('/:projectId', ProjectsController.getProject);
     this.router.post(
       '/',
       [validationMiddleware(ProjectsValidator.projects()), verifyToken],

@@ -1,8 +1,7 @@
 import { Document, Schema, model } from 'mongoose';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import config from '../config';
-import { JWT_SECRET } from '../util/secrets';
+import { JWT_SECRET, SALT_SECRET } from '../util/secrets';
 
 interface EncryptPassword {
   (encryptPassword: string): Promise<string>;
@@ -25,11 +24,7 @@ interface UserType extends Document {
 
 const UserSchema = new Schema(
   {
-    name: {
-      type: String,
-      unique: true,
-      index: true,
-    },
+    name: String,
     email: {
       type: String,
       unique: true,
@@ -67,7 +62,7 @@ UserSchema.methods = {
     }
   },
   encryptPassword(password: string): Promise<string> {
-    return bcrypt.hash(password, bcrypt.genSaltSync(config.salt));
+    return bcrypt.hash(password, bcrypt.genSaltSync(Number(SALT_SECRET)));
   },
   generateToken(): string {
     return jwt.sign(

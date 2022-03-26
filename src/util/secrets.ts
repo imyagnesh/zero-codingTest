@@ -1,4 +1,4 @@
-export const { MONGODB_URI, JWT_SECRET } = process.env;
+export const { MONGODB_URI, JWT_SECRET, SALT_SECRET } = process.env;
 
 if (!MONGODB_URI) {
   console.log('No mongo connection string. Set MONGODB_URI environment variable.');
@@ -7,5 +7,10 @@ if (!MONGODB_URI) {
 
 if (!JWT_SECRET) {
   console.log('No JWT secret string. Set JWT_SECRET environment variable.');
+  process.exit(1);
+}
+
+if (!SALT_SECRET) {
+  console.log('No salt secret string. Set JWT_SECRET environment variable.');
   process.exit(1);
 }

@@ -36,7 +36,7 @@ class UserController {
 
       const authenticateUser = await user.authenticate(password);
 
-      if (!authenticateUser) response.unauthorized('Invalid password');
+      if (!authenticateUser) return response.unauthorized('Invalid password');
 
       return response.created({ accessToken: user.generateToken(), user });
     } catch (error) {

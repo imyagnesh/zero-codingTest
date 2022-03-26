@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload, VerifyCallback } from 'jsonwebtoken';
 import { JWT_SECRET } from './secrets';
 
 interface User {
@@ -27,6 +27,12 @@ export function createToken(user: User): string {
     },
   );
 }
+
+export const JWTVerify = (authorization: string, callback?: VerifyCallback<JwtPayload | string>) => {
+  const token = authorization.replace(/bearer /i, '');
+
+  jwt.verify(token, JWT_SECRET, callback);
+};
 
 export function verifyToken(req: any, res: any, next: any): void {
   const { token } = req.headers;

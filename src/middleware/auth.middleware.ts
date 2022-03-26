@@ -1,26 +1,20 @@
-import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
-import { JWT_SECRET } from '../util/secrets';
-
-type JWTType = {
-  name: string;
-  email: string;
-  id: string;
-};
+import { JWTVerify } from '../util/auth';
+import ResponseWrapper from '../helpers/response_wrapper';
+import { JWTType } from '../types/jwtType';
 
 const verifyToken = (req: Request, res: Response, next: NextFunction): void => {
   const { authorization } = req.headers;
+  const response: ResponseWrapper = new ResponseWrapper(res);
 
   if (!authorization) {
-    res.status(403).send({ message: 'No token provided!' });
+    response.forbidden('No token provided!');
     return;
   }
 
-  const token = authorization.replace(/bearer /i, '');
-
-  jwt.verify(token, JWT_SECRET, (err: Error, decoded: JWTType) => {
+  JWTVerify(authorization, (err: Error, decoded: JWTType) => {
     if (err) {
-      res.status(401).send({ message: 'Unauthorized!' });
+      response.unauthorized('Invalid Token!');
       return;
     }
     const body = { ...req.body, userId: decoded.id };

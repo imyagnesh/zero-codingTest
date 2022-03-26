@@ -7,10 +7,6 @@ class AuthValidator {
       password: Joi.string().required(),
     });
   }
-
-  public static whoami() {
-    return Joi.object({});
-  }
 }
 
 export default AuthValidator;

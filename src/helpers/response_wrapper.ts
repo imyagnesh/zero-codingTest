@@ -30,7 +30,7 @@ class ResponseWrapper {
       return this.res.status(success_code).send({ success: true, data });
     }
 
-    return this.res.status(fail_code).send({ success: false, data });
+    return this.res.status(fail_code).send({ success: false, error: data });
   }
 
   public created(data: object): Response {
@@ -68,6 +68,15 @@ class ResponseWrapper {
         message: message || '',
       },
       fail_code: 403,
+    });
+  }
+
+  public notFound(message?: string): Response {
+    return this.handle({
+      data: {
+        message: message || '',
+      },
+      fail_code: 404,
     });
   }
 

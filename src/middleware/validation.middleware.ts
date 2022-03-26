@@ -11,7 +11,7 @@ function validationMiddleware(Validator: Joi.ObjectSchema<any>): RequestHandler 
       }
       return next();
     } catch (error) {
-      return response.ok({ success: false, data: { message: error.details[0].message } });
+      return response.badRequest(error.details[0].message);
     }
   };
 }
